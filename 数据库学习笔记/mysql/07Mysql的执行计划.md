@@ -75,8 +75,3 @@
 ​	3、当有union result的时候，表名是union n1,n2等的形式，n1,n2表示参与union的id
 
 
-
-
-
-
-
