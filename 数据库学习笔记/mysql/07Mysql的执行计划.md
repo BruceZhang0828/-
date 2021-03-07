@@ -10,9 +10,9 @@
 
 |    Column     |                    Meaning                     |
 | :-----------: | :--------------------------------------------: |
-|      id       |            The `SELECT` identifier             |
-|  select_type  |               The `SELECT` type                |
-|     table     |          The table for the output row          |
+|      id       |                    查询的id                    |
+|  select_type  |                  查询语句类型                  |
+|     table     |         当前行用到的表(物理表或虚拟表)         |
 |  partitions   |            The matching partitions             |
 |     type      |                 The join type                  |
 | possible_keys |         The possible indexes to choose         |

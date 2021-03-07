@@ -121,21 +121,21 @@
    15. 自增与自减运算符：n++；操作数不能是数值。++n，n++：前缀形式会先完成加1；而后缀形式会使用变量原来的值。
 
    16. 关系和boolean运算符：== (相等)，！=(不能)，<（小于）、>（大于）、<=（小于等于）和>=（大于等于）运算符。&&表示逻辑“与”运算符，使用||表示逻辑“或”运算符。三元运算:?:,例子x<y?x:y，取x和y比较小的值。
-   
+
    17. 位运算符：& and运算 | or运算  ^xor(异或) 运算 ~ not(非)运算。还有>>和<<运算符将位模式左移或右移。
-   
+
    18. 括号与运算符级别：
-   
+
        1. &&的优先级比||的优先级高
        2. +=是右结合运算符
-   
+
    19. 枚举类型
-   
+
        1. 变量的取值只在一个有限的集合内
        2. enum Size {X,XL,XXL}；
-   
+
    20. 字符串
-   
+
        1. Java字符串就是Unicode字符序列
        2. 每个用双引号括起来的字符串都是String类的一个实例
        3. 子串:  String类的substring方法可以从一个较大的字符串提取出一个子串。字符串s.substring(a, b)的长度为b-a
@@ -147,3 +147,192 @@
        8. 码点与代码单元：String调用s.charAt(n)将返回位置n的代码单元。
        9. String API：很多常用的
        10. 构建字符串：每次连接字符串，都会构建一个新的String对象，既耗时，又浪费空间；使用StringBuilder类就可以避免这个问题的发生。
+       
+   21. 输入和输出
+
+       1. 读取输入: 构造一个Scanner对象，并与“标准输入流”System.in关联。
+
+          ```java
+          Scanner scanner = new Scanner(System.in);
+          String s = scanner.nextLine();
+          System.out.println(s);
+          ```
+
+       2. nextLine():读取一行;next（）：读取一个词；nextInt（）：读取整数；nextDouble（）读取浮点数。
+
+       3. Console类实现密码隐藏的功能。readPassword（）；
+
+       4. 格式化输出：System.out.printf();
+
+          
+
+          ```java
+          System.out.printf("%8.2f",x); // 8个字符宽度和小数点后两个字符的精度打印
+          ```
+
+          ​	转化符: %s:字符串.%d:十进制整数;%f:转化为浮点等；
+
+          ​	日期和时间的转化符。
+
+       5.  文件的输入与输出：
+
+          1. 文件读取：new  Scanner（Paths.get("myFile.txt"),"UTF-8"）;
+          2. 文件输出: PrintWriter("myFile.txt","UTF-8")。print、println以及printf命令输入内容。
+
+   22. 控制流程：
+
+       条件语句，循环语句，switch语句
+
+       条件语句：
+
+       ​	块作用域：一对大括号。块指定了变量的作用域。
+
+       ​	条件语句的格式：if（）else {}
+
+       循环语句：
+
+       ​	while（condition）{} :先执行条件判断,后执行循环体,可能循环体一次都不执行。
+
+       ​	do/while :	先执行一次循环体,然后进行条件判断。
+
+       ​	for：for循环语句是支持迭代的一种通用结构，利用每次迭代之后更新的计数器或类似的变量来控制迭代次数。注意：for循环使用浮点数来做判断。可能永远不会结束。由于舍入的误差，最终可能得不到精确值。
+
+       多重选择：switch语句：switch...case...befault;
+
+       有可能触发多个case分支。如果在case分支语句的末尾没有break语句，那么就会接着执行下一个case分支语句。
+
+       中断控制流程语句：
+
+       break不带标签跳出循环语句，跳出switch语句。Java还提供了一种带标签的break语句，用于跳出多重嵌套的循环语句。
+
+       continue语句将控制转移到最内层循环的首部。
+
+   23. 大数值：
+
+       两个很有用的类：BigInteger和BigDecimal
+
+       BigInteger ：add（） subtract(）multiply（）divide（）mod() compareTo()  valueOf()。
+
+       BigDecimal：add（） subtract(）multiply（）divide（）；
+
+       注意：RoundingMode.HALF_UP是在学校中学习的四舍五入方式。
+
+   24. 数组：
+
+       数组是一种数据结构，用来存储同一类型值的集合。
+
+       int [] a;或者int[] a = new int[100]; 
+
+       数组长度不要求是常量：new int[n]会创建一个长度为n的数组。
+
+       数组的下标从0～99（不是1～100）。 并且试图访问元素a[100]（或任何在0～99之外的下标），程序就会引发**“array index out of bounds”**异常而终止执行。
+
+       一旦创建了数组，就不能再改变它的大小（尽管可以改变每一个数组元素）。
+
+   25. for each循环
+
+       collection这一集合表达式必须是一个数组或者是一个实现了Iterable接口的类对象（例如ArrayList）。
+
+       for each循环语句的循环变量将会遍历数组中的每个元素，而不需要使用下标值。
+
+       如果不希望遍历集合中的每个元素,或者循环内部需要使用下标值等，不能使用for each。
+
+   26. 数组初始化以及匿名数组
+
+       ```java
+       int[] a = {1,2,3,4,5,6};
+       ```
+
+       Java中允许创建一个长度为0的数组:
+
+       ```java
+       new int[0];
+       ```
+
+   27.  数组拷贝:
+
+       允许将一个数组变量拷贝给另一个数组变量。这时，两个变量将引用同一个数组：
+
+       ```java
+       int[] luckNumbers = smallPrimes;
+       luckNumbers[5] = 12;
+       ```
+
+       就要使用Arrays类的copyOf方法:
+
+       ```java
+       int[] arr = Arrays.copyOf(luckNumbers,luckNumbers.length);
+       ```
+
+       第二个参数是新数组的长度;如果长度小于原始数组的长度，则只拷贝最前面的数据元素。
+
+   28. 命令行参数
+
+       通过main方法中"String[] args" 接收Java xxx -args;
+
+   29. 数组排序:
+
+       使用Arrays类中的sort方法。使用了优化的快速排序算法。
+
+       Arrays工作类中的方法：toString（）将数组字符串化； copyOf（）复制数组；copyOfRange（）截断复制数组；sort（）；fill()设置元素中的默认值；
+
+   30. 多维数组：
+
+       多维数组将使用多个下标访问数组元素，它适用于表示表格或更加复杂的排列形式。
+
+       for each循环语句不能自动处理二维数组的每一个元素。要想访问二维数组a的所有元素，需要使用两个嵌套的循环。
+
+       快速打印一个二维数组：Arrays.deepToString(a);
+
+   31. 不规则数组: 
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       ​	
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
+       
+
